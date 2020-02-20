@@ -1,0 +1,44 @@
+Scenario:
+    TestWithMultipleParameter:
+        url: https://www.amazon.com/s?k=
+        parameters:
+            - Fender+Jazz+Bass
+            - Fender+Jaguar
+        check:
+            xpath: //span[contains(text(),'results')]
+    TestWithSteps:
+        url: https://www.amazon.com/
+        steps:
+            - input:
+                  xpath: //input[@id='twotabsearchtextbox']
+                  value: new Mac Book
+            - check:
+                  xpath: //div[@id="issDiv0"]
+            - click:
+                  xpath: //div[@id="issDiv0"]
+            - input:
+                  xpath: //input[@id='twotabsearchtextbox']
+                  value: StarCraft pc
+                  append: false
+            - check:
+                  xpath: //div[@id="issDiv0"]
+            - click:
+                  xpath: //div[@id="issDiv0"]
+            - input:
+                  xpath: //input[@id='twotabsearchtextbox']
+                  value: new xbox game
+            - check:
+                  xpath: //div[@id="issDiv1"]
+            - click:
+                  xpath: //div[@id="issDiv1"]
+    TestAdwancedUsage:
+        steps:
+            - url: https://www.amazon.com/
+            - check:
+                  css: "#twotabsearchtextbox"
+            - execute_JS:
+                  value: document.querySelector('#twotabsearchtextbox').value = "Mac book"
+            - execute_JS:
+                  value: document.getElementsByClassName('nav-input')[0].form.submit()
+            - check:
+                  xpath: //span[contains(text(),'results')]
