@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selene import browser
 from webdriver_manager.chrome import ChromeDriverManager
-from scenario_executor import run_scenario
-from yaml_parser import parse_section
+from module.scenario_executor import run_scenario
+from module.yaml_parser import parse_section
 
 driver = None
 

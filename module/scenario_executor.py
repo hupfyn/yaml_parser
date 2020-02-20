@@ -1,4 +1,4 @@
-import browser_action_handler
+from module import browser_action_handler
 import copy
 
 
